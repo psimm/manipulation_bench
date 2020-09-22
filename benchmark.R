@@ -12,8 +12,9 @@ microbenchmark({flights %>%
 })
 
 # data.table
+DT <- copy(as.data.table(flights))
 microbenchmark({
-  data.table(flights)[,.(arr_delay = mean(arr_delay, na.rm = TRUE)), by = .(carrier)]
+  DT[,.(arr_delay = mean(arr_delay, na.rm = TRUE)), by = .(carrier)]
 })
 
 
